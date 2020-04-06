@@ -2,42 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    
     <title>Library</title>
 </head>
-<body>
-    <header class="Header">
-        <h1>
-            Book's Library
-        </h1> 
-    </header>
+<body class="container">
+    <div class="row">
+        <div class="col">
+            <header class="Header text-center">
+                <h1>
+                    Book's Library
+                </h1> 
+            </header>
 
-    <div class="inputs">
-        <h3>Add books</h3>
-        <input id="Title" type="text" placeholder="Title"> 
-        <input id="Author" type="text" placeholder="Author">
-        <input id="pages" type="text" placeholder="Number of Pages">
-        <input id="read?" type="checkbox" name="Read?">
-        <label for="Read?">Read?</label>
-        <button class="button">Submit</button>
+            <h3>Add books</h3>
+
+            <form>
+                <div class="form-row">
+                  <div class="col">
+                    <input id="Title" type="text" class="form-control" placeholder="Title">
+                  </div>
+                  <div class="col">
+                    <input id="Author" type="text" class="form-control" placeholder="Author">
+                  </div>
+                  <div class="col">
+                    <input id="pages" type="text" class="form-control" placeholder="Number of Pages">
+                  </div>
+                  <div class="col">
+                    <input id="read?" type="checkbox" name="Read?" class="form-check"><label for="Read?">Read?</label>
+                  </div>
+
+                  <div class="col">
+                    <button class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </form>
+
+        
+            <table id="library_catalog" class="table">
+                <tr class="lib_category">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                    <th>No.</th>
+                    <th></th>
+                </tr>
+                <tbody id="lib_content">
+        
+                </tbody>
+            </table>
+        </div>
     </div>
+   
 
-    <table id="library_catalog">
-        <tr class="lib_category">
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Status</th>
-            <th>No.</th>
-            <th></th>
-        </tr>
-        <tbody id="lib_content">
+    
 
-        </tbody>
-    </table>
-
-<script src="app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 </html>
