@@ -16,9 +16,9 @@ We create a constructor for making “book” objects. Our book objects have the
 - Bootstrap 4
 - java script
 
-## Live Demo
+## Live Version
 
-[Live Demo Link](https://livedemo.com)
+[Live Link](https://anna-myzukina.github.io/library/)
 
 
 ## Getting Started
