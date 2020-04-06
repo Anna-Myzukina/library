@@ -8,7 +8,35 @@
     <title>Library</title>
 </head>
 <body>
-    
+    <header class="Header">
+        <h1>
+            Book's Library
+        </h1> 
+    </header>
+
+    <div class="inputs">
+        <h3>Add books</h3>
+        <input id="Title" type="text" placeholder="Title"> 
+        <input id="Author" type="text" placeholder="Author">
+        <input id="pages" type="text" placeholder="Number of Pages">
+        <input id="read?" type="checkbox" name="Read?">
+        <label for="Read?">Read?</label>
+        <button class="button">Submit</button>
+    </div>
+
+    <table id="library_catalog">
+        <tr class="lib_category">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Status</th>
+            <th>No.</th>
+            <th></th>
+        </tr>
+        <tbody id="lib_content">
+
+        </tbody>
+    </table>
 
 <script src="app.js"></script>
 </body>
