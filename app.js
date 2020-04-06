@@ -1,4 +1,4 @@
-let myLibrary;
+let myLibrary = [];
 
 function storageAvailable(type) {
     var storage;
@@ -110,6 +110,7 @@ function render(){
     
     secondTable.innerHTML="";
     for(let i = myLibrary.length-1; i >= 0; i--){
+        console.log(i);
         let row = secondTable.insertRow(0);
         row.setAttribute("data-index", `${i}`);
         let cell1 = row.insertCell(0);
