@@ -1,0 +1,25 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "description": "library app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anna-Myzukina/library.git"
+  },
+  "keywords": [
+    "javascript",
+    "HTML",
+    "CSS",
+    "Bootstrap"
+  ],
+  "author": "collaborative project",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anna-Myzukina/library/issues"
+  },
+  "homepage": "https://github.com/Anna-Myzukina/library#readme"
+}
