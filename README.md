@@ -44,9 +44,9 @@ Happy coding!
 
 👤 **Author2**
 
-- Github: [](https://github.com/emmanuelkamala)
-- Twitter: [](https://twitter.com/ejkamala)
-- Linkedin: [](https://linkedin.com/emmanuelkamala)
+- Github: [emmanuelkamala](https://github.com/emmanuelkamala)
+- Twitter: [ejkamala](https://twitter.com/ejkamala)
+- Linkedin: [emmanuelkamala](https://linkedin.com/emmanuelkamala)
 
 ## 🤝 Contributing
 
