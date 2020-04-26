@@ -42,11 +42,6 @@ Happy coding!
 - Twitter: [@twitterhandle](https://twitter.com/AnnaMuzykina)
 - Linkedin: [linkedin](https://www.linkedin.com/in/ann-muzykina/)
 
-👤 **Author2**
-
-- Github: [](https://github.com/githubhandle)
-- Twitter: [](https://twitter.com/twitterhandle)
-- Linkedin: [](https://linkedin.com/linkedinhandle)
 
 ## 🤝 Contributing
 
