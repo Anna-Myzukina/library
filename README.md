@@ -1,7 +1,7 @@
 # Project: Library
 
 > It`s a small Library app.
-![screenshot](./app_screenshot.png)
+![screenshot](./mylibrary.png)
 
 We create a constructor for making “book” objects. Our book objects have the book’s:
 * title, 
@@ -13,7 +13,6 @@ We create a constructor for making “book” objects. Our book objects have the
 
 - HTML
 - CSS
-- Bootstrap 4
 - java script
 
 ## Live Version
@@ -62,7 +61,7 @@ Give a ⭐️ if you like this project!
 
 - The odin project
 - Bootstrap free framework
-- Microvers tips
+- Microverse tips
 
 ## 📝 License
 

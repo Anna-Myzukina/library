@@ -1,165 +1,107 @@
-let myLibrary = [];
 
-function storageAvailable(type) {
-    var storage;
-    try {
-        storage = window[type];
-        var x = '__storage_test__';
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    }
-    catch(e) {
-        return e instanceof DOMException && (
-            e.code === 22 ||
-            e.code === 1014 ||
-            e.name === 'QuotaExceededError' ||
-            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            (storage && storage.length !== 0);
-    }
+const myLibrary = [];
+
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
-Storage.prototype.setObj = function(key, obj) {
-    return this.setItem(key, JSON.stringify(obj))
-}
-Storage.prototype.getObj = function(key) {
-    return JSON.parse(this.getItem(key))
+function addBookToLibrary(title, author, pages, read) {
+  myLibrary.push(new Book(title, author, pages, read));
 }
 
-if (storageAvailable('localStorage')) {
-    alert("Local Storage will be used");
-    if(localStorage.length === 0){
-        myLibrary = [{title:"The Art of War",
-        author: "Sun Tzu",
-        numOfPages: 234,
-        read: "Read" },
-        {title:"Rich Dad, Poor Dad",
-        author: "Robert Kiyosaki",
-        numOfPages: 335,
-        read: "Read" },
-        {title:"Think and Grow Rich",
-        author: "Napolean Hill",
-        numOfPages: 256,
-        read: "Unread" },]; 
-    }
-    else {
-    myLibrary = localStorage.getObj("library");
-}
-}
-else {
-  alert("Local Storage is not available on this browser.");
-    myLibrary = [{title:"The Art of War",
-    author: "Sun Tzu",
-    numOfPages: 234,
-    read: "Read" },
-    {title:"Rich Dad, Poor Dad",
-    author: "Robert Kiyosaki",
-    numOfPages: 335,
-    read: "Read" },
-    {title:"Think and Grow Rich",
-    author: "Napolean Hill",
-    numOfPages: 256,
-    read: "Unread" },]; 
+addBookToLibrary('Rich Dad, Poor Dad', 'Robery Kiyosaki', 235, 0);
+addBookToLibrary('Think and Grow Rich', 'Napolean Hill', 334, 0);
+
+function displayAlert(message, messageType) {
+  const alert = document.querySelector('.alert');
+  const alertMessage = document.querySelector('#message');
+  const alertType = document.querySelector('#message-type');
+  alert.style.display = 'block';
+  alertMessage.innerHTML = message;
+  alertType.innerHTML = messageType;
+  if (messageType === 'Danger!') {
+    alert.style.backgroundColor = '#ff5c33';
+  } else if (messageType === 'Success!') {
+    alert.style.backgroundColor = '#00cc66';
+  } else {
+    alert.style.backgroundColor = '#ffa31a';
+  }
 }
 
-function Book(title, author, numOfPages, read){
-    this.title = title;
-    this.author = author;
-    this.numOfPages = numOfPages;
-    
-    if(read){
-        this.read = "Read";
+function render() {
+  const container = document.querySelector('.items-container');
+  container.innerHTML = '';
+  let counter = 0;
+  myLibrary.forEach(obj => {
+    container.innerHTML
+    += `
+      <div class='item card'> 
+          <p class='title'><span>Title: </span>${obj.title}</p>
+          <p class='pages'>${obj.pages}<span> Pages</span></p>
+          <p class='author'><span>By: </span>${obj.author}</p>
+          
+          <div class='action-btns'>
+            <button class='btn read-btn' onclick='updateReadStatus(${counter})'>
+            ${obj.read === 0 ? 'Not read' : 'Read'}
+            </button>
+            <button class='btn delete-btn' onclick='deleteBook(${counter})'>Delete</button>
+          </div>
+      </div>
+    `;
+    counter += 1;
+  });
+}
+const buttonNewBook = document.getElementById('btnNewBook');
+buttonNewBook.addEventListener('click', () => {
+  const form = document.querySelector('#form');
+  form.style.display = 'block';
+});
+
+function addFormValues() {
+  const form = document.getElementById('form');
+  function handleForm(event) { event.preventDefault(); }
+  form.addEventListener('submit', handleForm);
+  const btnAddBook = document.getElementById('addBook');
+  btnAddBook.addEventListener('click', () => {
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+    const read = document.getElementById('read').checked ? 1 : 0;
+    const pages = document.getElementById('pages');
+    if (title.value === null || title.value === '') {
+      displayAlert('Title must not be empty.', 'Danger!');
+    } else if (author.value === null || author.value === '') {
+      displayAlert('Author must not be empty.', 'Danger!');
+    } else if (pages.value === null || pages.value === '') {
+      displayAlert('Book pages must not be empty.', 'Danger!');
+    } else {
+      addBookToLibrary(title.value, author.value, parseInt(pages.value, 10), read);
+      title.value = '';
+      author.value = '';
+      pages.value = '';
+      document.getElementById('read').checked = false;
+      render();
+      displayAlert('Book added successfully', 'Success!');
     }
-    else {
-        this.read = "Unread";
-    }
-    this.info = function(){
-        return `${this.title} by ${this.author}, ${this.numOfPages} pages, ${this.read}`;
-    }
+  });
 }
 
-const table = document.getElementById("library_catalog");
-const secondTable = document.getElementById("lib_content");
-
-function addBookToLibrary(){
-    
-    let title = document.getElementById("Title").value;
-    let author = document.getElementById("Author").value;
-    if(title === "" || author === "" || !pages){
-        alert('Please fill out the entire form');
-        return;
-    }
-    
-    let numOfPages = document.getElementById("pages").value;
-    if(isNaN(Number(numOfPages))){
-        alert('Please use numbers only');
-        return;
-    }
-    else {
-        numOfPages = Number(numOfPages);
-        console.log(typeof numOfPages);
-    }
-
-    let read = document.getElementById("read?").checked;
-    myLibrary.push(new Book(title,author,numOfPages,read));
-    secondTable.innerHTML="";
-    render();
+function deleteBook(position) { // eslint-disable-line no-unused-vars
+  myLibrary.splice(position, 1);
+  render();
+  displayAlert('Book deleted successfully', 'Danger!');
 }
 
-function render(){ 
-    
-    secondTable.innerHTML="";
-    for(let i = myLibrary.length-1; i >= 0; i--){
-        console.log(i);
-        let row = secondTable.insertRow(0);
-        row.setAttribute("data-index", `${i}`);
-        let cell1 = row.insertCell(0);
-        let cell2 = row.insertCell(1);
-        let cell3 = row.insertCell(2);
-        let cell4 = row.insertCell(3);
-        let cell5 = row.insertCell(4);
-        let cell6 = row.insertCell(5);
-
-        cell1.innerHTML = myLibrary[i].title;
-        cell2.innerHTML = myLibrary[i].author;
-        cell3.innerHTML = myLibrary[i].numOfPages;
-        cell4.innerHTML = `<button class="button">${myLibrary[i].read}</button>`;
-        cell4.id = "toggle";
-        cell5.innerHTML = i + 1;
-        cell6.id = "remove";
-        cell6.innerHTML = `<button class="button">Delete</button>`;
-    }
-
-    let allremoveButton  = document.querySelectorAll("#remove");
-    for (const button of allremoveButton) {
-        button.addEventListener('click', remove);
-    }
-    let allToggle = document.querySelectorAll("#toggle");
-    for( const toggles of allToggle){
-        toggles.addEventListener('click', toggle)
-    }
-    if (storageAvailable('localStorage')) {
-        localStorage.setObj("library", myLibrary);
-        console.log(localStorage);
-    }
+function updateReadStatus(position) { // eslint-disable-line no-unused-vars
+  if (myLibrary[position].read === 0) {
+    myLibrary[position].read = 1;
+  } else {
+    myLibrary[position].read = 0;
+  }
+  render();
 }
 
-function remove(){
-    myLibrary.splice(Number(this.parentNode.dataset.index),1);
-    render();
-}
-
-function toggle(){
-    
-    if(myLibrary[this.parentNode.dataset.index].read === "Read"){
-        myLibrary[this.parentNode.dataset.index].read = "Unread"; 
-    }else if(myLibrary[this.parentNode.dataset.index].read === "Unread"){
-        myLibrary[this.parentNode.dataset.index].read = "Read";
-    }
-    render();
-}
 render();
-
-let submit = document.querySelector("button");
-
-submit.addEventListener("click", addBookToLibrary);
+addFormValues();
