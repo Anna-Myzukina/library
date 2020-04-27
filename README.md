@@ -1,7 +1,7 @@
 # Project: Library
 
 > It`s a small Library app.
-![screenshot](./app_screenshot.png)
+![screenshot](./mylibrary.png)
 
 We create a constructor for making “book” objects. Our book objects have the book’s:
 * title, 
@@ -13,12 +13,11 @@ We create a constructor for making “book” objects. Our book objects have the
 
 - HTML
 - CSS
-- Bootstrap 4
 - java script
 
-## Live Demo
+## Live Version
 
-[Live Demo Link](https://livedemo.com)
+[Live Link](https://anna-myzukina.github.io/library/)
 
 
 ## Getting Started
@@ -42,6 +41,12 @@ Happy coding!
 - Twitter: [@twitterhandle](https://twitter.com/AnnaMuzykina)
 - Linkedin: [linkedin](https://www.linkedin.com/in/ann-muzykina/)
 
+👤 **Author2**
+
+- Github: [emmanuelkamala](https://github.com/emmanuelkamala)
+- Twitter: [ejkamala](https://twitter.com/ejkamala)
+- Linkedin: [emmanuelkamala](https://linkedin.com/emmanuelkamala)
+
 
 ## 🤝 Contributing
 
@@ -57,7 +62,7 @@ Give a ⭐️ if you like this project!
 
 - The odin project
 - Bootstrap free framework
-- Microvers tips
+- Microverse tips
 
 ## 📝 License
 
